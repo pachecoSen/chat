@@ -1,0 +1,30 @@
+{
+  "name": "base-chat",
+  "version": "1.0.0",
+  "description": "Proyecto Base para Chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pachecoSen/chat.git"
+  },
+  "keywords": [
+    "Base",
+    "Chat",
+    "Socket"
+  ],
+  "author": "Ignacio Pacheco",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/pachecoSen/chat/issues"
+  },
+  "homepage": "https://github.com/pachecoSen/chat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "node-yaml-config": "0.0.5",
+    "socket.io": "^2.3.0"
+  }
+}
