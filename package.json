@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "node-yaml-config": "0.0.5",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "xmlbuilder": "^13.0.2"
   }
 }
