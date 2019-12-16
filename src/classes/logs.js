@@ -4,7 +4,8 @@ const moment = require('moment'),
     {tmpdir} = require('os'),
     {mkdir, readFileSync, existsSync, writeFileSync, writeFile} = require('fs'),
     {resolve} = require('path'),
-    builder = require('xmlbuilder');
+    builder = require('xmlbuilder'),
+    {xml2js} = require('xml-js');
 
 class Log{
     constructor(str_path = tmpdir()){
@@ -94,7 +95,7 @@ class Log{
                         'Date' : FileInfo[1],
                         'Time' : FileInfo[2]
                     };
-                    FileInfo = builder.create({FileInfo, Log}).end({ pretty: true});
+                    FileInfo = builder.create('Logs', {encoding: 'utf-8'}).ele({FileInfo}).up().ele('Log').end({ pretty: true});
                     writeFileSync(fileLog, FileInfo);
                     break;
             
@@ -111,13 +112,18 @@ class Log{
         if(existsSync(fileLog)){
             switch (this.formato) {
                 case 'txt':
-                    let contenido = readFileSync(fileLog, 'utf8');
-                    contenido = `${contenido}${str_log}\n`;
+                    const contenido = `${readFileSync(fileLog, 'utf8')}${str_log}\n`;
                     writeFileSync(fileLog, contenido);
                     break;
 
                 case 'xml':
-                    
+                    const old = xml2js(readFileSync(fileLog, 'utf8'), {compact: false});
+                    let FileInfo = {};
+                    old.elements[0].elements[0].elements.forEach(e => FileInfo[e.name] = e.elements[0].text);
+                    FileInfo = builder.create('Logs', {encoding: 'utf-8'}).ele({FileInfo}).up().ele('Log');
+                    FileInfo.ele('Route', {'file' : str_log.Route, 'Date' : str_log.Date, 'Time' : str_log.Time}, str_log.State)
+                    FileInfo = FileInfo.end({ pretty: true});
+                    writeFileSync(fileLog, FileInfo);
                     break;
             
                 default:

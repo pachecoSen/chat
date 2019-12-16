@@ -8,6 +8,7 @@ const fileConfig = loadConfig(resolve(__dirname, './../config.yaml'));
 module.exports = {
     'PORT' : fileConfig.PORT,
     'DIR' : {
-        'PUBLIC' : resolve(__dirname, './../public')
+        'PUBLIC' : resolve(__dirname, './../public'),
+        'LOGS' : resolve(__dirname, './../logs')
     }
 }

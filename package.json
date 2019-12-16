@@ -4,6 +4,7 @@
   "description": "Proyecto Base para Chat",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,10 +23,15 @@
   },
   "homepage": "https://github.com/pachecoSen/chat#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
     "moment": "^2.24.0",
+    "morgan": "^1.9.1",
     "node-yaml-config": "0.0.5",
     "socket.io": "^2.3.0",
+    "xml-js": "^1.6.11",
     "xmlbuilder": "^13.0.2"
   }
 }
