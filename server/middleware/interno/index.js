@@ -10,8 +10,9 @@ const Logs = require(resolve(__dirname, './../../../src/classes/logs'));
 const logs = new Logs();
 logs.setPath(DIR.LOGS).setPrefijo('SYS.MIDDLEWARE').setName(new Date(moment().format('MMM DD, YYYY')).getTime()/1000000).setFormato('xml');
 
+module.exports.app = app;
+
 ['asset'].forEach(m => {
-    module.exports.app = app;
     const log = {
         'Route' : resolve(__dirname, `./${m}`),
         'State' : 'ERR',

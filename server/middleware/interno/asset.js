@@ -16,6 +16,9 @@ app.use(`${route}js/:file`, (req, res, next) => {
     if(!existsSync(file))
         return res.status(404).end();
 
+    if(existsSync(file.replace('.js','.min.js')))
+        return next();
+
     readFile(file, 'utf8', (err, data) => {
         if (err) throw err;
         
