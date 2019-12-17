@@ -3,7 +3,7 @@
 const {resolve} = require('path'),
     moment = require('moment');
 
-const {DIR} = require(resolve(__dirname, './../../config/index'))
+const {DIR} = require(resolve(__dirname, './../../config/index'));
 
 const Logs = require(resolve(__dirname, './../../src/classes/logs'));
 
@@ -32,6 +32,8 @@ try {
         app.use(helmet());
         app.use(morgan('dev'));
         app.use(json());
+        module.exports.app = app;
+        require('./interno/index');
     }   
 } catch (error) {
     logs.addLog(`ERR:[${moment()}][${resolve(__dirname, __filename)}] - ${error}`);

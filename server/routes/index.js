@@ -4,15 +4,13 @@ const {resolve} = require('path'),
     moment = require('moment');
 
 const {DIR} = require(resolve(__dirname, './../../config/index'))
-
 const Logs = require(resolve(__dirname, './../../src/classes/logs'));
-
 const logs = new Logs();
 logs.setPath(DIR.LOGS).setPrefijo('SYS.ROUTE').setName(new Date(moment().format('MMM DD, YYYY')).getTime()/1000000).setFormato('xml');
 
 module.exports = app => {
     module.exports.app = app;
-    ['info'].forEach(r => {
+    ['info', 'asset'].forEach(r => {
         const log = {
             'Route' : resolve(__dirname, `./${r}`),
             'State' : 'ERR',

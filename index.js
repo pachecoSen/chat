@@ -19,7 +19,7 @@ server.listen(PORT, err => {
 
         logs.addLog(`OK:[${moment()}][${resolve(__dirname, __filename)}] - Server successfully started, on the port ${PORT}.`);
         try {
-            module.exports.io = server;
+            module.exports.server = server;
             require('./server/socket');
             logs.addLog(`OK:[${moment()}][${resolve(__dirname, __filename)}] - Socket.io server, started successfully.`);
         } catch (error) {

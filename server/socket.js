@@ -1,5 +1,8 @@
 "use strict";
 
-const {resolve} = require('path');
+const {resolve} = require('path'),
+    socketIO = require('socket.io');
 
-const {io} = require(resolve(__dirname, './../index'));
+const {server} = require(resolve(__dirname, './../index'));
+const io = socketIO(server);
+

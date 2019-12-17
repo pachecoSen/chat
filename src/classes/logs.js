@@ -5,7 +5,8 @@ const moment = require('moment'),
     {mkdir, readFileSync, existsSync, writeFileSync, writeFile} = require('fs'),
     {resolve} = require('path'),
     builder = require('xmlbuilder'),
-    {xml2js} = require('xml-js');
+    {xml2js} = require('xml-js'),
+    isEmpty = require('is-empty');
 
 class Log{
     constructor(str_path = tmpdir()){
@@ -121,6 +122,9 @@ class Log{
                     let FileInfo = {};
                     old.elements[0].elements[0].elements.forEach(e => FileInfo[e.name] = e.elements[0].text);
                     FileInfo = builder.create('Logs', {encoding: 'utf-8'}).ele({FileInfo}).up().ele('Log');
+                    if(!isEmpty(old.elements[0].elements[1].elements))
+                        old.elements[0].elements[1].elements.forEach(r => FileInfo.ele('Route', {'file' : r.attributes.file, 'Date' : r.attributes.Date, 'Time' : r.attributes.Time}, r.elements[0].text));
+
                     FileInfo.ele('Route', {'file' : str_log.Route, 'Date' : str_log.Date, 'Time' : str_log.Time}, str_log.State)
                     FileInfo = FileInfo.end({ pretty: true});
                     writeFileSync(fileLog, FileInfo);

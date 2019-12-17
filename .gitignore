@@ -106,3 +106,5 @@ dist
 # Extras
 *.code-workspace
 package-lock.json
+
+*.min.js
