@@ -5,11 +5,11 @@ const {resolve} = require('path'),
 
 const {DIR} = require(resolve(__dirname, './../../config/index'));
 
+const epoch = require(resolve(__dirname, './../../src/helpers/epoch'));
+
 const Logs = require(resolve(__dirname, './../../src/classes/logs'));
-
 const logs = new Logs();
-
-logs.setPath(DIR.LOGS).setPrefijo('SYS').setName(new Date(moment().format('MMM DD, YYYY')).getTime()/1000000).setFormato('TXT');
+logs.setPath(DIR.LOGS).setPrefijo('SYS').setName(epoch(moment().format('MMM DD, YYYY'))).setFormato('TXT');
 
 try {
     const express = require('express'),
@@ -32,6 +32,7 @@ try {
         app.use(helmet());
         app.use(morgan('dev'));
         app.use(json());
+        
         module.exports.app = app;
         require('./interno/index');
     }   

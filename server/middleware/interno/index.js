@@ -6,9 +6,12 @@ const {resolve} = require('path'),
 const {app} = require(resolve(__dirname, './../index'));
 
 const {DIR} = require(resolve(__dirname, './../../../config/index'));
+
+const epoch = require(resolve(__dirname, './../../../src/helpers/epoch'));
+
 const Logs = require(resolve(__dirname, './../../../src/classes/logs'));
 const logs = new Logs();
-logs.setPath(DIR.LOGS).setPrefijo('SYS.MIDDLEWARE').setName(new Date(moment().format('MMM DD, YYYY')).getTime()/1000000).setFormato('xml');
+logs.setPath(DIR.LOGS).setPrefijo('SYS.MIDDLEWARE').setName(epoch(moment().format('MMM DD, YYYY'))).setFormato('xml');
 
 module.exports.app = app;
 

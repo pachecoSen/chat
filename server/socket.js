@@ -8,9 +8,12 @@ const {server} = require(resolve(__dirname, './../index'));
 module.exports.io = socketIO(server);
 
 const {DIR} = require(resolve(__dirname, './../config/index'));
+
+const epoch = require(resolve(__dirname, './../src/helpers/epoch'));
+
 const Logs = require(resolve(__dirname, './../src/classes/logs'));
 const logs = new Logs();
-logs.setPath(DIR.LOGS).setPrefijo('SYS.SOCKET').setName(new Date(moment().format('MMM DD, YYYY')).getTime()/1000000).setFormato('xml');
+logs.setPath(DIR.LOGS).setPrefijo('SYS.SOCKET').setName(epoch(moment().format('MMM DD, YYYY'))).setFormato('xml');
 
 ['inicio'].forEach(s => {
     const log = {
