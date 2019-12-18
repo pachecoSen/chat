@@ -1,5 +1,5 @@
 #Configuración de API
 default:
-  ENTORNO: pro
+  ENTORNO: dev
   #Puerto, numero entero
   PORT: 8080
