@@ -10,6 +10,7 @@ module.exports = {
     'PORT' : fileConfig.PORT,
     'DIR' : {
         'PUBLIC' : resolve(__dirname, './../public'),
+        'VIEWS' : resolve(__dirname, './../server/views'),
         'LOGS' : resolve(__dirname, './../logs'),
         'ASSET' : {
             'JS' : resolve(__dirname, './../public/js'),

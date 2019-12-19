@@ -18,10 +18,10 @@ try {
     morgan = require('morgan'),
     {json} = require('body-parser');
 
-    const config = require(resolve(__dirname, './../../config/index'));
-
     module.exports = app => {
-        app.use(express.static(config.DIR.PUBLIC));
+        app.set('views', DIR.VIEWS);
+        app.set('view engine', 'pug');
+        app.use(express.static(DIR.PUBLIC));
         app.use(cors());
         app.use((req, res, next) => {
             res.header("Access-Control-Allow-Origin", "*");
