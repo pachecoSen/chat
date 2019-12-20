@@ -1,0 +1,15 @@
+include ./../bloques/start
+body
+    include ./../bloques/navbar
+
+    main.container.bg-light(role="main")
+        div.full
+            form.form-signin.text-center(action="post")
+                p.h4 Inicio de sesion
+                div.form-group
+                    label(for="idEmail")
+                    input.form-control#idEmail(type="email", placeholder="name@example.com")
+
+    
+    include ./../bloques/footer
+        

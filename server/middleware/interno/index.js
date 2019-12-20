@@ -15,7 +15,7 @@ logs.setPath(DIR.LOGS).setPrefijo('SYS.MIDDLEWARE').setName(epoch(moment().forma
 
 module.exports.app = app;
 
-['asset'].forEach(m => {
+['asset', 'admin'].forEach(m => {
     const log = {
         'Route' : resolve(__dirname, `./${m}`),
         'State' : 'ERR',

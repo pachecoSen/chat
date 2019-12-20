@@ -16,7 +16,8 @@ try {
     cors = require('cors'),
     helmet = require('helmet'),
     morgan = require('morgan'),
-    {json} = require('body-parser');
+    {json} = require('body-parser'),
+    cookieParser = require('cookie-parser');
 
     module.exports = app => {
         app.set('views', DIR.VIEWS);
@@ -32,6 +33,7 @@ try {
         app.use(helmet());
         app.use(morgan('dev'));
         app.use(json());
+        app.use(cookieParser());
         
         module.exports.app = app;
         require('./interno/index');
