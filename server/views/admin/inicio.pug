@@ -3,13 +3,22 @@ body
     include ./../bloques/navbar
 
     main.container.bg-light(role="main")
-        div.full
-            form.form-signin.text-center(action="post")
+        div.row.justify-content-center
+            form.form-signin.text-center#formInicio(action="./sys/admin/login", method="POST")
                 p.h4 Inicio de sesion
                 div.form-group
-                    label(for="idEmail")
-                    input.form-control#idEmail(type="email", placeholder="name@example.com")
-
+                    label(for="idEmail") Email de Usuario:
+                    input.form-control#idEmail(type="email", name="email", placeholder="Ingrese E-Mail", required, autofocus)
+                div.form-group
+                    label(for="idPassword") Password:
+                    input.form-control#idPassword(type="password", name="password", placeholder="Ingrese Password", required)
+                button.btn.btn-primary.container(type="submit") Iniciar
+    - var module = "mErr";
+    - var moduleTitle = "mTitle1";
+    - var moduleBody = "mBody1";
+    include ./../bloques/module
     
     include ./../bloques/footer
+
+    script(src="./asset/js/admin.login")
         

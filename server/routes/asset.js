@@ -2,7 +2,7 @@
 
 const {resolve} = require('path');
 
-const { app } = require('./index');
+const {app} = require('./index');
 
 const {ENV, DIR} = require(resolve(__dirname, './../../config/index'));
 

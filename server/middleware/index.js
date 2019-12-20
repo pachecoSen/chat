@@ -17,7 +17,8 @@ try {
     helmet = require('helmet'),
     morgan = require('morgan'),
     {json} = require('body-parser'),
-    cookieParser = require('cookie-parser');
+    cookieParser = require('cookie-parser'),
+    multer = require('multer');
 
     module.exports = app => {
         app.set('views', DIR.VIEWS);
@@ -33,6 +34,7 @@ try {
         app.use(helmet());
         app.use(morgan('dev'));
         app.use(json());
+        app.use(multer().array());
         app.use(cookieParser());
         
         module.exports.app = app;

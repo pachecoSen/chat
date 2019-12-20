@@ -13,7 +13,7 @@ logs.setPath(DIR.LOGS).setPrefijo('SYS.ROUTE').setName(epoch(moment().format('MM
 
 module.exports = app => {
     module.exports.app = app;
-    ['info', 'asset', 'admin'].forEach(r => {
+    ['info', 'asset', 'admin', 'sysAdmin'].forEach(r => {
         const log = {
             'Route' : resolve(__dirname, `./${r}`),
             'State' : 'ERR',
