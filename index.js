@@ -26,6 +26,12 @@ server.listen(PORT, err => {
             module.exports.server = server;
             require('./server/socket');
             logs.addLog(`OK:[${moment()}][${filename}] - Socket.io server, started successfully.`);
+            try {
+                const {config:confDB, conn} = require('./server/db');
+                logs.addLog(`OK:[${moment()}][${filename}] - Connection to the ${confDB.DataBase} database on the ${confDB.Host} server was successful.`);
+            } catch (error) {
+                logs.addLog(`ERR:[${moment()}][${filename}] - ${err}`);
+            }
         } catch (error) {
             logs.addLog(`ERR:[${moment()}][${filename}] - ${err}`);
         }   

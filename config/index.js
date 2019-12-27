@@ -16,5 +16,12 @@ module.exports = {
             'JS' : resolve(__dirname, './../public/js'),
             'CSS' : resolve(__dirname, './../public/css')
         }
+    },
+    'DB' : {
+        'HOST' : fileConfig.DATABASE.HOSTDB,
+        'PORT' : fileConfig.DATABASE.PORTDB,
+        'DATABASE' : fileConfig.DATABASE.NAMEDB,
+        'USERNAME' : fileConfig.DATABASE.USER,
+        'PASSWORD' : fileConfig.DATABASE.PASS
     }
 }

@@ -20,5 +20,5 @@ app.use('/admin/', (req, res, next) => {
 app.use(`${route}login`, (req, res, next) => {
     const {email, password} = req.body;
 
-    return !isEmptyArray([email, password]) ? res.json({'estado' : false, 'msg' : 'User or password error'}) : next();
+    return !isEmptyArray([email, password]) ? res.json({'estado' : false, 'msg' : 'User or password error.'}) : next();
 });

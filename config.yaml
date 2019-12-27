@@ -3,3 +3,10 @@ default:
   ENTORNO: dev
   #Puerto, numero entero
   PORT: 8080
+  #Configuración Base de datos
+  DATABASE:
+    HOSTDB: localhost
+    PORTDB: 33060
+    NAMEDB: chat
+    USER: user_Chat
+    PASS: Qwerty.12345
